@@ -119,7 +119,7 @@ If using a remote Ollama host:
 
 ### Q: What should I do if I switch from Ollama to OpenAI for RAG or Agentic workflows?
 
-If you previously used **Ollama** to ingest documents into **ChromaDB**, and then switch to **OpenAI** for RAG or agentic classification, please **reset the ChromaDB folder first**.
+If you previously used **Ollama** to ingest documents into **ChromaDB**, and then switch to **OpenAI**  or vice-versa for RAG or agentic classification, please **reset the ChromaDB folder first**.
 
 This ensures embedding formats remain consistent and avoids runtime errors due to incompatible vector encodings.
 
