@@ -36,8 +36,8 @@ graph TD
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/your-username/news-relevance-classifier
-cd news-relevance-classifier
+git clone https://github.com/rahulsharma5693/Public-Relay-News-Classifier
+cd Public-Relay-News-Classifier
 ```
 
 ### 2. Ensure `init.sql` is present
