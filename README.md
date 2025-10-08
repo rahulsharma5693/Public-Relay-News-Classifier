@@ -92,12 +92,11 @@ If using a remote Ollama host:
 ```
 .
 ├── app/
+│   ├──database/
+│      └── init.sql
 │   ├── app.py
-│   ├── ingest_to_chroma.py
-│   ├── init.sql
+│   ├── ingestion.py
 │   └── requirements.txt
-├── docker-init/
-│   └── init.sql
 ├── Dockerfile
 ├── docker-compose.yml
 └── README.md
