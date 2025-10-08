@@ -1,0 +1,48 @@
+version: '3.9'
+
+services:
+    ollama:
+      image: ollama/ollama
+      container_name: ollama
+      ports:
+        - "11434:11434"
+      volumes:
+        - ollama_data:/root/.ollama
+      restart: always
+      entrypoint: /bin/bash -c "ollama serve & sleep 5 && ollama pull qwen3:1.7b && ollama pull nomic-embed-text:latest && tail -f /dev/null"
+
+    postgres:
+      image: postgres:15
+      container_name: relevance_pg
+      restart: always
+      environment:
+        POSTGRES_DB: relevance_db
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: 5693
+      volumes:
+        - pgdata:/var/lib/postgresql/data
+        - ./app/database:/docker-entrypoint-initdb.d
+      ports:
+        - "5432:5432"
+
+    app:
+      build: .
+      container_name: relevance_app
+      depends_on:
+        - postgres
+        - ollama
+      ports:
+        - "8501:8501"
+      volumes:
+        - ./app:/app
+      environment:
+        PG_HOST: postgres
+        PG_PORT: 5432
+        PG_DB: relevance_db
+        PG_USER: postgres
+        PG_PASSWORD: 5693
+        LANGCHAIN_OLLAMA_URL: http://ollama:11434
+
+volumes:
+  pgdata:
+  ollama_data:
