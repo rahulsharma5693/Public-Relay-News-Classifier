@@ -23,7 +23,7 @@ A Streamlit-based app for classifying news articles by relevance using LLMs and 
 ```mermaid
 graph TD
   A[Streamlit App] --> B[Model Provider Selector]
-  B --> C1[Ollama (local or remote)]
+  B --> C1[Ollama]
   B --> C2[OpenAI]
   C1 --> D1[LLM via Ollama]
   C1 --> D2[Embeddings via Ollama]
