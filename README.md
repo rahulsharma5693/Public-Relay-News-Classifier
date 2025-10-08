@@ -22,12 +22,18 @@ A Streamlit-based app for classifying news articles by relevance using LLMs and 
 
 ```mermaid
 graph TD
-  A[Streamlit App] --> B[LangChain Agent]
-  B --> C[LLM via Ollama]
-  B --> D[Embeddings via Ollama]
-  A --> E[PostgreSQL]
-  A --> F[CSV Upload]
-  E --> G[init.sql]
+  A[Streamlit App] --> B[Model Provider Selector]
+  B --> C1[Ollama (local/remote)]
+  B --> C2[OpenAI]
+  C1 --> D1[LLM via Ollama]
+  C1 --> D2[Embeddings via Ollama]
+  C2 --> E1[LLM via OpenAI]
+  C2 --> E2[Embeddings via OpenAI]
+  A --> F[LangChain Agent]
+  F --> G[Classification Logic]
+  A --> H[PostgreSQL]
+  A --> I[CSV Upload]
+  H --> J[init.sql]
 ```
 
 ---
